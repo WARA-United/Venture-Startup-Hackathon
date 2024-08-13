@@ -5,6 +5,7 @@ import { InboxOutlined } from '@ant-design/icons';
 
 import { Input, Space, Button, Select, Tag, Upload, message, DatePicker} from "antd";
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from 'react-router-dom'; // useNavigate 훅 추가
 
 const { Dragger } = Upload;
 const { TextArea } = Input;
@@ -53,6 +54,8 @@ export default function Page3() {
 
   const [previewImage, setPreviewImage] = useState(null); // 미리보기 이미지
   const [fileList, setFileList] = useState([]); // 파일 리스트 상태
+
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const handleChange = info => {
     const newFileList = info.fileList.slice(-1); // 최신 파일만 유지
@@ -162,19 +165,23 @@ export default function Page3() {
             // }),
           }
       );
-      const result = await response.json();
-      console.log(result);
+      // const result = await response.json();
+      // console.log(result);
+      message.success('공모전이 등록되었습니다.');
+      // 성공적으로 제출한 후 페이지 이동
+      navigate('/page2');
 
-      if (response.ok) {
-          console.log('response ok');
-      }
-      else {
-          console.log('response not ok');
-      }
+      // if (response.ok) {
+      //     console.log('response ok');
+      // }
+      // else {
+      //     console.log('response not ok');
+      // }
 
 
   } catch (e) {
-      console.error(e);
+    console.error('There was a problem with the fetch operation:', e.message);
+    message.error('공모전 등록에 실패했습니다.');
   }
 
   };
