@@ -23,7 +23,7 @@ export default function MyCard({
   return (
     <Card sx={{ minWidth: 300 }}>
       <CardActionArea>
-        <CardMedia component="img" height="200" image={cardImage} alt={title} />
+        <CardMedia component="img" height="350" image={cardImage} alt={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
@@ -38,7 +38,7 @@ export default function MyCard({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleButtonClick}>
+        <Button size="medium" color="primary" onClick={handleButtonClick}>
           자세히 보기
         </Button>
       </CardActions>

@@ -1,5 +1,6 @@
 import React from "react";
 import DefaultImage from "../../assets/images/DefaultImage.jpg";
+import Category from "../../components/Category/Category";
 import MyCard from "../../components/MyCard/MyCard";
 import "./Page2.scss";
 
@@ -161,6 +162,7 @@ export default function Page2() {
 
   return (
     <div className="page2">
+      <Category />
       {/* Render MyCard components with the expanded dummy data */}
       {projectData.map((project, index) => (
         <MyCard
