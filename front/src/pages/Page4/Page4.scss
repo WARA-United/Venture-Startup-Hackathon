@@ -1,2 +1,21 @@
 .page4 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%; /* Ensure the container takes full width */
+}
+
+.user-card-container {
+  flex: 1 1 calc(25% - 1rem); /* Each card takes up 25% of the container's width minus the gap */
+  max-width: 300px; /* Set a maximum width for each card */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's width */
 }

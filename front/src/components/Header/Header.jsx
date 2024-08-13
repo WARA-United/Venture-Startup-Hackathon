@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-import { UserOutlined, SecurityScanOutlined  } from '@ant-design/icons';
+import { SecurityScanOutlined, UserOutlined } from "@ant-design/icons";
 
-import { Modal, Button, Input, Space, message } from 'antd';
-
+import { Button, Input, Modal, Space, message } from "antd";
 
 import "./Header.scss";
 
@@ -21,9 +20,8 @@ export default function Header() {
   };
 
   const handleLogin = () => {
-    message.success('로그인 되었습니다.');
+    message.success("로그인 되었습니다.");
   };
-
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -79,18 +77,23 @@ export default function Header() {
           공모전 관리
         </NavLink>
         <NavLink to="/page4" className="nav-link" onClick={toggleMenu}>
-          참가 스타트업
+          참가자 리스트
+        </NavLink>
+        <NavLink to="/page6" className="nav-link" onClick={toggleMenu}>
+          계약서 관리
         </NavLink>
 
         <Button onClick={showModal}>Log in</Button>
       </div>
 
-      <Modal title="Log in" open={isModalOpen} onCancel={handleCancel} footer={null}>
-        <Space direction="vertical" size="large" style={{ width: '100%' }}>
-          <Input
-            prefix={<UserOutlined />}
-            placeholder="Username"
-          />
+      <Modal
+        title="Log in"
+        open={isModalOpen}
+        onCancel={handleCancel}
+        footer={null}
+      >
+        <Space direction="vertical" size="large" style={{ width: "100%" }}>
+          <Input prefix={<UserOutlined />} placeholder="Username" />
           <Input.Password
             prefix={<SecurityScanOutlined />}
             placeholder="Password"

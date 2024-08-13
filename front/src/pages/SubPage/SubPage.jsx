@@ -1,14 +1,15 @@
 import { HeartOutlined, ShareAltOutlined } from "@ant-design/icons";
 import { Button, Image, Modal, Typography, message } from "antd";
-
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./SubPage.scss";
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function SubPage() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const { cardImage, title, content1, content2, content3, content4, content5 } =
     location.state || {};
 
@@ -31,6 +32,26 @@ export default function SubPage() {
 
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const handleApplyClick = () => {
+    const newUser = {
+      userName: "와라와라",
+      userContent: "프론트엔드 개발자",
+    };
+
+    // 로컬 스토리지에 저장된 users 배열을 가져옴
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // 새로운 사용자 데이터를 추가하고 다시 로컬 스토리지에 저장
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // 알림 메시지 표시
+    message.success("신청 되었습니다.");
+
+    // 모달 열기
+    setIsModalOpen(true);
   };
 
   return (
@@ -94,13 +115,7 @@ export default function SubPage() {
         </Paragraph>
 
         <div className="button-container">
-          <Button
-            size="large"
-            onClick={() => {
-              setIsModalOpen(true);
-              message.success("챌린지에 참가되었습니다.");
-            }}
-          >
+          <Button size="large" onClick={handleApplyClick}>
             지원하기
           </Button>
           <Button size="large" icon={<HeartOutlined />} />

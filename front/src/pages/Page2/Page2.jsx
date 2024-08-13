@@ -114,7 +114,7 @@ export default function Page2() {
             content2={project.startDate} //시작일
             content3={project.endDate} //종료일
             content4={project.content} //내용
-            content5={project.comEmail} //기업email
+            content5={project.compEmail} //기업email
           />
         ))}
       </div>
