@@ -1,17 +1,20 @@
 import React from "react";
 import "./SubPage.scss";
-import { Divider } from "antd";
-import { Flex } from "antd";
-import { Button } from "antd";
-import { Image } from "antd";
+import { Divider , Flex, Button, Image, Tag } from "antd";
+
+import { HeartOutlined, ShareAltOutlined } from '@ant-design/icons';
+
+import { Typography } from 'antd';
+const { Title } = Typography;
 
 export default function SubPage() {
   return (
-    // <Flex justify={"space-evenly"} style={{height:"100%"}}>
     <>
-    <div style={{padding :"2%", width:"70%"}}>
-      <h1>공모전 제목</h1>
-      <div>부제목</div>
+    <Flex justify={"space-evenly"} style={{height:"100%"}}>
+    <div style={{padding :"2%", width:"60%"}}>
+      <Title>공모전 제목</Title>
+      <Title level={4}>부제목</Title>
+      <Tag style={{padding:"1%"}}>카테고리</Tag>
       <div>2024/01/05 ~ 2024/05/05</div>
       <Divider />
 
@@ -64,16 +67,17 @@ export default function SubPage() {
       </p>
     </div>
 
-    <div style={{width:"20%", padding:"2%", position: "fixed",right: "2%",
-        top: "10%",}} >
+    <div style={{width:"20%", padding:"2%"}} >
     <Image
     width={200}
     src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
   />
-     <h1 style={{padding:"1%"}}>공모전 제목</h1> 
-     <Button size="large">지원하기</Button>
+     <Title level={2}>공모전 제목</Title> 
+     <Button size="large" style={{marginRight:"5%"}}>지원하기</Button>
+     <Button icon={<HeartOutlined />} style={{marginRight:"5%", padding:"5%"}}/>
+     <Button icon={<ShareAltOutlined />} type="primary"/>
       </div>
-    {/* </Flex> */}
+    </Flex>
     </>
   );
 }
