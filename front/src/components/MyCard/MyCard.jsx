@@ -1,10 +1,10 @@
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { CardActionArea } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 훅을 import
+import { useNavigate } from "react-router-dom";
 import "./MyCard.scss";
 
 export default function MyCard({
@@ -13,15 +13,31 @@ export default function MyCard({
   content1,
   content2,
   content3,
+  content4,
+  content5,
 }) {
-  const navigate = useNavigate(); // useNavigate 훅을 사용
+  const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate(`/subpage/${encodeURIComponent(title)}`); // title을 URL 파라미터로 전달
+  const handleCardClick = () => {
+    navigate(`/subpage/${encodeURIComponent(title)}`, {
+      state: {
+        cardImage,
+        title,
+        content1,
+        content2,
+        content3,
+        content4,
+        content5,
+      },
+    });
   };
 
   return (
-    <Card sx={{ minWidth: 300 }}>
+    <Card
+      sx={{ minWidth: 300, maxWidth: 300, margin: 2 }}
+      onClick={handleCardClick}
+      style={{ cursor: "pointer" }}
+    >
       <CardActionArea>
         <CardMedia component="img" height="350" image={cardImage} alt={title} />
         <CardContent>
@@ -29,19 +45,24 @@ export default function MyCard({
             {title}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {content1}
+            분야 : {content1}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {content2}
+            기간 : {content2} ~ {content3}
           </Typography>
-          <Typography variant="body2">{content3}</Typography>
+          <Typography
+            variant="body2"
+            component="div"
+            style={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            내용 : {content4}
+          </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="medium" color="primary" onClick={handleButtonClick}>
-          자세히 보기
-        </Button>
-      </CardActions>
     </Card>
   );
 }
