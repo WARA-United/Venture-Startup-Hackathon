@@ -22,7 +22,7 @@ export default function SubPage() {
     eligibility: "대학생 | 대학원생 | 일반인 | 제한 없음",
     prizeType: "상금",
     prizeAmount: "200만원",
-    website: "공모전 홈페이지 바로가기",
+    website: "https://www.google.com",
     keywords:
       "해양환경보전 | 숏폼 | 포스터 | 블루카본 | 지속가능한 바다 | 염생식물 | 해양환경보호 | 해양경찰청 | 씽굿 공모전 | 씽굿공모전",
   };
