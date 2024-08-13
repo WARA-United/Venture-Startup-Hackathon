@@ -66,7 +66,11 @@ export default function Page6() {
             placeholder="금액" 
             variant="borderless" 
             className="small-input" 
-          />}</span> 만원은 착수시점에 지급하고 잔금 <span>(금액)</span> 만원은 작업완료 시 작업완료납품과 동시에 “갑”은 “을”에게 지급하기로 한다.
+          />}</span> 만원은 착수시점에 지급하고 잔금 {<Input 
+            placeholder="금액" 
+            variant="borderless" 
+            className="small-input" 
+          />} 만원은 작업완료 시 작업완료납품과 동시에 “갑”은 “을”에게 지급하기로 한다.
           단, 회사업무 수행을 위한 출장 등이 발생할 경우에는 “갑”이 그 비용을 지급하고 식대 등은 “을”의 비용으로 한다.
         </p>
       </div>
@@ -127,14 +131,24 @@ export default function Page6() {
       <div className="contract-section">
         <h2>제9조【 손 해 배 상 】</h2>
         <p>
-          “을”의 귀책사유로 인하여 본 계약이 불이행이 되었을 경우 “을”은 “갑”이 제시한 손해배상의 책임을 진다. (이때 손해배상은 <span>(세부사항)</span>으로 한다.)
+          “을”의 귀책사유로 인하여 본 계약이 불이행이 되었을 경우 “을”은 “갑”이 제시한 손해배상의 책임을 진다. (이때 손해배상은 {<Input 
+          placeholder="세부사항" 
+          variant="borderless" 
+          className="small-input" 
+            style={{ width: "20%" }}
+        />}으로 한다.)
         </p>
       </div>
 
       <div className="contract-section">
         <h2>제10조【 소 송 관 할 】</h2>
         <p>
-          본 계약으로 발생하는 분쟁은 <span>(관할법원)</span> 법원을 관할법원으로 한다. 각 당사자는 위 계약을 증명하기 위하여 본 계약서 2통을 작성하여 각각 서명(또는 기명)날인 후 “갑“과 “을“이 각각 1통씩을 보관한다.
+          본 계약으로 발생하는 분쟁은 {<Input 
+          placeholder="관할법원" 
+          variant="borderless" 
+          className="small-input" 
+            style={{ width: "10%" }}
+        />} 법원을 관할법원으로 한다. 각 당사자는 위 계약을 증명하기 위하여 본 계약서 2통을 작성하여 각각 서명(또는 기명)날인 후 “갑“과 “을“이 각각 1통씩을 보관한다.
         </p>
       </div>
 
