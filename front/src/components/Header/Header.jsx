@@ -63,7 +63,7 @@ export default function Header() {
     <div className={`header ${isVisible ? "visible" : "hidden"}`}>
       <div className="logo">
         <NavLink to="/" className="nav-link">
-          스타트업 채용 매니저
+          스매칭
         </NavLink>
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
