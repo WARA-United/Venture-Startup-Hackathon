@@ -61,9 +61,6 @@ export default function Header() {
         <NavLink to="/page4" className="nav-link" onClick={toggleMenu}>
           참가 스타트업
         </NavLink>
-        <NavLink to="/page5" className="nav-link" onClick={toggleMenu}>
-          페이지5
-        </NavLink>
       </div>
     </div>
   );
