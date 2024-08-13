@@ -139,7 +139,7 @@ export default function Page3() {
     };
 
     // JSON 데이터를 문자열로 변환하여 'content'라는 키로 추가
-    formData.append('contest', JSON.stringify(jsonData));
+    formData.append('contest', new Blob( [JSON.stringify(jsonData)], { type: 'application/json' }));
 
     // 파일 추가 (첫 번째 파일만 추가, 여러 파일을 지원할 경우 반복문 사용)
     if (fileList.length > 0) {
@@ -151,9 +151,6 @@ export default function Page3() {
           `http://15.165.192.29:8000/api/contest`,
           {
               method: 'POST',
-              headers: {
-                  // 'Content-Type': `multipart/form-data`,
-              },
               body: formData,
             //   JSON.stringify({
             //     compEmail : "comp@naver.com",
