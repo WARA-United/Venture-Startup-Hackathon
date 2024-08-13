@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Page3.scss";
+import "./Page5.scss";
 import { InboxOutlined } from '@ant-design/icons';
 
 
@@ -11,10 +11,9 @@ const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 
-export default function Page3() {
+export default function Page5() {
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [members, setMembers] = useState(['']); // 팀원 명단
 
   const [previewImage, setPreviewImage] = useState(null); // 미리보기 이미지
   const [fileList, setFileList] = useState([]); // 파일 리스트 상태
@@ -64,66 +63,62 @@ export default function Page3() {
     showUploadList: true,
   };
 
-  const handleRangeChange = (dates, dateStrings) => {
-    if (dates) {
-      console.log('포맷된 시작 날짜:', dateStrings[0]);
-      console.log('포맷된 종료 날짜:', dateStrings[1]);
+  const handleAddMember = () => {
+    setMembers([...members, '']);
+  };
 
-      setStartDate(dateStrings[0]);
-      setEndDate(dateStrings[1]);
-    } else {
-      setStartDate(null);
-      setEndDate(null);
-    }
+  const handleRemoveMember = (index) => {
+    setMembers(members.filter((_, i) => i !== index));
+  };
+
+  const handleInputChange = (index, event) => {
+    const newMembers = [...members];
+    newMembers[index] = event.target.value;
+    setMembers(newMembers);
   };
 
 
   return (
-  <div className="page3">
+  <div className="page5">
 
       <div className="inputArea">
-          <h1>공모전 명</h1>
+          <h1>지원팀 명</h1>
 
           <div className="inputDiv">
-              <Input placeholder="공모전 명을 입력하시오"/>
+              <Input placeholder="지원팀 명을 입력하시오"/>
           </div>
 
       </div>
 
-<div className="inputArea">
-      <h2>카테고리</h2>
-      <Select
-          showSearch
-          placeholder="카테고리 검색"
-          filterOption={(input, option) =>
-            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-          }
-          options={[
-            {
-              value: '1',
-              label: 'IT/학술/논문',
-            },
-            {
-              value: '2',
-              label: '아이디어/기획',
-            },
-            {
-              value: '3',
-              label: '스포츠/음악',
-            },
-          ]}
-
-          // 키 값이 다를 경우 사용
-          // fieldNames={{ value: 'id', label: 'name' }} 
-        />
-        </div>
-
-
     <div className="inputArea">
-      <h2>공모전 기간</h2>
-      <RangePicker onChange={handleRangeChange} />
-    </div>
+      <h2>팀원 명단</h2>
+      
+      <Space direction="vertical" style={{ marginBottom: '10px' }}>
+      {members.map((member, index) => (
+        <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+          
+          <Input
+            placeholder={`팀원 ${index + 1}`}
+            value={member}
+            onChange={(event) => handleInputChange(index, event)}
+          />
+          {/* <Button onClick={handleAddMember}>
+            추가
+          </Button> */}
+          <Button
+            style={{ backgroundColor: 'red', color: 'white' }}
+            onClick={() => handleRemoveMember(index)}
+          >
+            삭제
+          </Button>
+          </div>
+      ))}
+      </Space>
+      <Button onClick={handleAddMember}>
+        추가
+      </Button>
 
+    </div>
 
       <div className="inputArea">
       <h2>이미지 업로드</h2>
@@ -161,7 +156,7 @@ export default function Page3() {
 
 
     <div style={{ padding: "1% 0" }}>
-      <h1>공모전 내용</h1>
+      <h1>지원 내용</h1>
     <div className="inputDiv">
         <TextArea
             showCount

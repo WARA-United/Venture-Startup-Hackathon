@@ -2,12 +2,32 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+
+import { UserOutlined, SecurityScanOutlined  } from '@ant-design/icons';
+
+import { Modal, Button, Input, Space, message } from 'antd';
+
+
 import "./Header.scss";
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleLogin = () => {
+    message.success('로그인 되었습니다.');
+  };
+
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const location = useLocation();
 
@@ -61,7 +81,25 @@ export default function Header() {
         <NavLink to="/page4" className="nav-link" onClick={toggleMenu}>
           참가 스타트업
         </NavLink>
+
+        <Button onClick={showModal}>Log in</Button>
       </div>
+
+      <Modal title="Log in" open={isModalOpen} onCancel={handleCancel} footer={null}>
+        <Space direction="vertical" size="large" style={{ width: '100%' }}>
+          <Input
+            prefix={<UserOutlined />}
+            placeholder="Username"
+          />
+          <Input.Password
+            prefix={<SecurityScanOutlined />}
+            placeholder="Password"
+          />
+          <Button type="primary" block onClick={handleLogin}>
+            Log in
+          </Button>
+        </Space>
+      </Modal>
     </div>
   );
 }
