@@ -1,0 +1,7 @@
+.page2 {
+  display: flex;
+  flex-wrap: wrap; /* 카드들이 줄바꿈되어 여러 줄에 걸쳐 나타나도록 설정 */
+  justify-content: center; /* 카드들을 가로로 가운데 정렬 */
+  gap: 1rem; /* 카드들 사이에 간격을 줌 */
+  margin: 1rem;
+}
