@@ -74,13 +74,13 @@ export default function Header() {
           공모전
         </NavLink>
         <NavLink to="/page3" className="nav-link" onClick={toggleMenu}>
-          공모전 관리
+          공모전 등록
         </NavLink>
         <NavLink to="/page4" className="nav-link" onClick={toggleMenu}>
           참가자 리스트
         </NavLink>
         <NavLink to="/page6" className="nav-link" onClick={toggleMenu}>
-          계약서 관리
+          계약서 작성
         </NavLink>
 
         <Button onClick={showModal}>Log in</Button>
