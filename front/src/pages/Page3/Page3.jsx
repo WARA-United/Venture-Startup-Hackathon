@@ -10,11 +10,42 @@ const { Dragger } = Upload;
 const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
+const categories = [
+  "건축",
+  "과학",
+  "기획/아이디어",
+  "디자인",
+  "마케팅",
+  "뷰티",
+  "스포츠",
+  "영상/사진",
+  "음악",
+  "패션",
+  "푸드",
+  "개발",
+  "프리랜서",
+  "학습",
+];
+
+// 카테고리 배열을 Select 옵션으로 변환하는 함수
+const convertCategoriesToOptions = (categories) => {
+  return categories.map((category, index) => ({
+    value: index.toString(), // 또는 다른 고유한 값
+    label: category,
+  }));
+};
+
+// 카테고리 번호를 텍스트로 변환하는 함수
+const getCategoryText = (categoryIndex) => {
+  return categories[parseInt(categoryIndex)] || ""; // 번호에 해당하는 카테고리 텍스트를 반환
+};
+
+
 
 export default function Page3() {
 
   const [competitionName, setCompetitionName] = useState(""); // 공모전 명
-  const [category, setCategory] = useState(""); // 카테고리
+  const [selectedCategory, setSelectedCategory] = useState(""); // 선택된 카테고리
   const [competitionContent, setCompetitionContent] = useState(""); // 공모전 내용
 
   const [startDate, setStartDate] = useState(null); // 시작 날짜 상태
@@ -81,12 +112,74 @@ export default function Page3() {
     }
   };
 
-  const handleSubmit = () => {
-    console.log('공모전 명:', document.querySelector('.ant-input').value);
-    console.log('카테고리:', document.querySelector('.ant-select-selection-item').textContent);
-    console.log('공모전 기간:', startDate, '~', endDate);
-    console.log('이미지:', previewImage);
-    console.log('공모전 내용:', document.querySelector('.ant-input').value);
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value);
+  };
+
+  const handleSubmit = async () => {
+    const categoryText = getCategoryText(selectedCategory);
+
+    console.log('공모전 명:', competitionName); // 상태 변수에서 공모전 명을 가져옵니다.
+    console.log('카테고리:', categoryText); // 상태 변수에서 카테고리 값을 가져옵니다.
+    console.log('공모전 기간:', startDate, '~', endDate); // 상태 변수에서 공모전 기간을 가져옵니다.
+    console.log('이미지:', previewImage); // 상태 변수에서 미리보기 이미지를 가져옵니다.
+    console.log('공모전 내용:', competitionContent); // 상태 변수에서 공모전 내용을 가져옵니다.
+
+
+    const formData = new FormData();
+
+    // JSON 데이터 객체 생성
+    const jsonData = {
+        compEmail: "comp@naver.com",
+        category: categoryText,
+        title: competitionName,
+        content: competitionContent,
+        startDate: startDate,
+        endDate: endDate,
+    };
+
+    // JSON 데이터를 문자열로 변환하여 'content'라는 키로 추가
+    formData.append('contest', JSON.stringify(jsonData));
+
+    // 파일 추가 (첫 번째 파일만 추가, 여러 파일을 지원할 경우 반복문 사용)
+    if (fileList.length > 0) {
+      formData.append('image', fileList[0].originFileObj || fileList[0].file);
+    }
+
+    try {
+      const response = await fetch(
+          `http://15.165.192.29:8000/api/contest`,
+          {
+              method: 'POST',
+              headers: {
+                  // 'Content-Type': `multipart/form-data`,
+              },
+              body: formData,
+            //   JSON.stringify({
+            //     compEmail : "comp@naver.com",
+            //     category : categoryText,
+            //     title :  competitionName,
+            //     content : competitionContent,
+            //     startDate : startDate,
+            //     endDate : endDate
+            // }),
+          }
+      );
+      const result = await response.json();
+      console.log(result);
+
+      if (response.ok) {
+          console.log('response ok');
+      }
+      else {
+          console.log('response not ok');
+      }
+
+
+  } catch (e) {
+      console.error(e);
+  }
+
   };
 
 
@@ -97,7 +190,11 @@ export default function Page3() {
           <h1>공모전 명</h1>
 
           <div className="inputDiv">
-              <Input placeholder="공모전 명을 입력하시오"/>
+              <Input 
+                    placeholder="공모전 명을 입력하시오"
+                    value={competitionName} // 상태 값으로 설정
+                    onChange={(e) => setCompetitionName(e.target.value)} // 상태 업데이트
+              />
           </div>
 
       </div>
@@ -107,23 +204,13 @@ export default function Page3() {
       <Select
           showSearch
           placeholder="카테고리 검색"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
           filterOption={(input, option) =>
             (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
           }
-          options={[
-            {
-              value: '1',
-              label: 'IT/학술/논문',
-            },
-            {
-              value: '2',
-              label: '아이디어/기획',
-            },
-            {
-              value: '3',
-              label: '스포츠/음악',
-            },
-          ]}
+          options={convertCategoriesToOptions(categories)} // 변환된 옵션 전달
+          style={{ width: 200 }} // Select 컴포넌트의 스타일
 
           // 키 값이 다를 경우 사용
           // fieldNames={{ value: 'id', label: 'name' }} 
@@ -179,6 +266,8 @@ export default function Page3() {
             showCount
             maxLength={500}
             placeholder="텍스트를 입력하시오"
+            value={competitionContent} // 상태 값으로 설정
+            onChange={(e) => setCompetitionContent(e.target.value)} // 상태 업데이트
             style={{
               height: 250,
               justifyContent: 'center',
