@@ -9,7 +9,7 @@ import Page2 from "./pages/Page2/Page2";
 import Page3 from "./pages/Page3/Page3";
 import Page4 from "./pages/Page4/Page4";
 import Page5 from "./pages/Page5/Page5";
-import ProjectPage from "./pages/ProjectPage/ProjectPage";
+import SubPage from "./pages/SubPage/SubPage";
 
 const Layout = () => (
   <div className="page">
@@ -31,7 +31,7 @@ function App() {
           <Route path="/page3" element={<Page3 />} />
           <Route path="/page4" element={<Page4 />} />
           <Route path="/page5" element={<Page5 />} />
-          <Route path="/project/:title" element={<ProjectPage />} />
+          <Route path="/subpage/:title" element={<SubPage />} />
         </Route>
       </Routes>
     </>

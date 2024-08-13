@@ -45,7 +45,7 @@ export default function Header() {
     <div className={`header ${isVisible ? "visible" : "hidden"}`}>
       <div className="logo">
         <NavLink to="/" className="nav-link">
-          프로젝트 매니저
+          스타트업 채용 매니저
         </NavLink>
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
@@ -53,13 +53,13 @@ export default function Header() {
       </div>
       <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
         <NavLink to="/page2" className="nav-link" onClick={toggleMenu}>
-          프로젝트 관리
+          공모전
         </NavLink>
         <NavLink to="/page3" className="nav-link" onClick={toggleMenu}>
-          사원 관리
+          공모전 관리
         </NavLink>
         <NavLink to="/page4" className="nav-link" onClick={toggleMenu}>
-          사업 관리
+          참가 스타트업
         </NavLink>
         <NavLink to="/page5" className="nav-link" onClick={toggleMenu}>
           페이지5
