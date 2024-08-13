@@ -13,8 +13,12 @@ const { RangePicker } = DatePicker;
 
 export default function Page3() {
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [competitionName, setCompetitionName] = useState(""); // 공모전 명
+  const [category, setCategory] = useState(""); // 카테고리
+  const [competitionContent, setCompetitionContent] = useState(""); // 공모전 내용
+
+  const [startDate, setStartDate] = useState(null); // 시작 날짜 상태
+  const [endDate, setEndDate] = useState(null); // 종료 날짜 상태
 
   const [previewImage, setPreviewImage] = useState(null); // 미리보기 이미지
   const [fileList, setFileList] = useState([]); // 파일 리스트 상태
@@ -75,6 +79,14 @@ export default function Page3() {
       setStartDate(null);
       setEndDate(null);
     }
+  };
+
+  const handleSubmit = () => {
+    console.log('공모전 명:', document.querySelector('.ant-input').value);
+    console.log('카테고리:', document.querySelector('.ant-select-selection-item').textContent);
+    console.log('공모전 기간:', startDate, '~', endDate);
+    console.log('이미지:', previewImage);
+    console.log('공모전 내용:', document.querySelector('.ant-input').value);
   };
 
 
@@ -184,6 +196,7 @@ export default function Page3() {
       padding: "7% 0"
       }}>
       <Button 
+          onClick={handleSubmit}
           type="primary"
           size="large"> 공모전 등록</Button>
     </div>
