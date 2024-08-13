@@ -43,7 +43,7 @@ public class CommunicationServiceImpl implements CommunicationService{
             headers.setContentType(MediaType.MULTIPART_FORM_DATA);
             http = new HttpEntity<>(bodyMap, headers);
 
-            URI uri = new URI("http://localhost:9000/api/image/upload");
+            URI uri = new URI("http://15.165.192.29:9000/api/image/upload");
             ResponseEntity response = restTemplate.exchange(uri, HttpMethod.POST, http, LinkedHashMap.class);
 
             if (response.getStatusCode().is2xxSuccessful()) {
