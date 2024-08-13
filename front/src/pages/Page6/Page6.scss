@@ -1,3 +1,69 @@
-.page6{
-    padding: 0 20%;
-}
+.contract {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contract h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #444;
+  }
+  
+  .contract-section {
+    margin-bottom: 20px;
+  }
+  
+  .contract-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  
+  .contract-section p {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+  
+  .signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .signature-section .party {
+    width: 45%;
+  }
+  
+  .signature-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .signature-section p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .footer-note {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .footer-note p {
+    margin: 5px 0;
+    font-style: italic;
+  }
+  
