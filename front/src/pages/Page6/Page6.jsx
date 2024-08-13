@@ -1,19 +1,23 @@
 import React from 'react';
 import './Page6.scss';
+import { Button, Input } from "antd";
+
 
 export default function Page6() {
   return (
+    <div className="Page6"> 
+
     <div className="contract">
-      <h1>프리랜서 고용계약서</h1>
+      <h1>고용계약서</h1>
 
       <div className="contract-section">
         <h2>계약건명</h2>
-        <p>(여기에 계약건명을 입력하세요)</p>
+        <Input placeholder="여기에 계약건명을 입력하세요" variant="borderless" />
       </div>
 
       <div className="contract-section">
         <h2>계약기간</h2>
-        <p>(여기에 계약기간을 입력하세요)</p>
+        <Input placeholder="여기에 계약기간을 입력하세요" variant="borderless" />
       </div>
 
       <p>
@@ -23,21 +27,46 @@ export default function Page6() {
       <div className="contract-section">
         <h2>제1조【 목 적 】</h2>
         <p>
-          본 계약은 “갑”이 “을”에게 의뢰한 000의 업무를 “갑”에게 공급함에 있어 “갑”과 “을” 사이에 필요한 사항을 정하는 것을 목적으로 한다.
+          본 계약은 “갑”이 “을”에게 의뢰한 
+          {<Input 
+          placeholder="OOO" 
+          variant="borderless" 
+          className="small-input" 
+        />}
+          
+          의 업무를 “갑”에게 공급함에 있어 “갑”과 “을” 사이에 필요한 사항을 정하는 것을 목적으로 한다.
         </p>
       </div>
 
       <div className="contract-section">
         <h2>제2조【 계 약 기 간 】</h2>
         <p>
-          계약 기간은 <span>(년)</span> <span>(월)</span> <span>(일)</span>로부터 <span>(년)</span> <span>(월)</span> <span>(일)</span>까지로 하며, 갑과 을의 합의 하에 본 계약기간은 연장될 수 있다.
+          계약 기간은           {<Input 
+          placeholder="시작일" 
+          variant="borderless" 
+          className="small-input"
+          style={{ width: "100px" }} 
+        />}로부터 {<Input 
+            placeholder="마감일" 
+            variant="borderless" 
+            className="small-input"
+            style={{ width: "100px" }} 
+          />}까지로 하며, 갑과 을의 합의 하에 본 계약기간은 연장될 수 있다.
         </p>
       </div>
 
       <div className="contract-section">
         <h2>제3조【 계 약 금 액 】</h2>
         <p>
-          총 계약금액은 <span>(금액)</span> 만원으로 하며, 계약금액 중 <span>(금액)</span> 만원은 착수시점에 지급하고 잔금 <span>(금액)</span> 만원은 작업완료 시 작업완료납품과 동시에 “갑”은 “을”에게 지급하기로 한다.
+          총 계약금액은 <span>          {<Input 
+          placeholder="금액" 
+          variant="borderless" 
+          className="small-input" 
+        />}</span> 만원으로 하며, 계약금액 중 <span>          {<Input 
+            placeholder="금액" 
+            variant="borderless" 
+            className="small-input" 
+          />}</span> 만원은 착수시점에 지급하고 잔금 <span>(금액)</span> 만원은 작업완료 시 작업완료납품과 동시에 “갑”은 “을”에게 지급하기로 한다.
           단, 회사업무 수행을 위한 출장 등이 발생할 경우에는 “갑”이 그 비용을 지급하고 식대 등은 “을”의 비용으로 한다.
         </p>
       </div>
@@ -45,7 +74,17 @@ export default function Page6() {
       <div className="contract-section">
         <h2>제4조【 납 품 】</h2>
         <p>
-          “을”은 작업 진행 중 중간 완료된 성과물을 매월 <span>(일자)</span> 등 <span>(회수)</span> 회에 걸쳐 중간 납품을 하며 최종 자료는 검토 및 수정 후 완성품으로 납품하기로 한다.
+          “을”은 작업 진행 중 중간 완료된 성과물을 매월 {<Input 
+          placeholder="일자" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "5%" }}
+        />} 등 {<Input 
+            placeholder="회수" 
+            variant="borderless" 
+            className="small-input" 
+            style={{ width: "5%" }}
+          />} 회에 걸쳐 중간 납품을 하며 최종 자료는 검토 및 수정 후 완성품으로 납품하기로 한다.
         </p>
       </div>
 
@@ -101,24 +140,59 @@ export default function Page6() {
 
       <div className="contract-section">
         <h2>계약일자</h2>
-        <p>20 <span>(년)</span> <span>(월)</span> <span>(일)</span></p>
+        {<Input 
+          placeholder="계약일자" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}
       </div>
 
       <div className="signature-section">
         <div className="party">
           <h3>(갑)</h3>
-          <p>주 소: <span>(주소)</span></p>
-          <p>회 사 명: <span>(회사명)</span></p>
+          <p>주 소: {<Input 
+          placeholder="주 소" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}</p>
+          <p>회 사 명: {<Input 
+          placeholder="회사명" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}</p>
           <p>대 표 자: <span>(대표자명)</span> (인)</p>
-          <p>연 락 처: <span>(연락처)</span></p>
+          <p>연 락 처: {<Input 
+          placeholder="연락처" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}</p>
         </div>
 
         <div className="party">
           <h3>(을)</h3>
-          <p>주 소: <span>(주소)</span></p>
-          <p>주민번호: <span>(주민번호)</span></p>
+          <p>주 소:           {<Input 
+          placeholder="주 소" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}</p>
+          <p>주민번호:           {<Input 
+          placeholder="주민번호" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}</p>
           <p>성 명: <span>(성명)</span> (인)</p>
-          <p>연 락 처: <span>(연락처)</span></p>
+          <p>연 락 처: {<Input 
+          placeholder="연락처" 
+          variant="borderless" 
+          className="small-input" 
+          style={{ width: "50%" }}
+        />}</p>
         </div>
       </div>
 
@@ -127,5 +201,15 @@ export default function Page6() {
         <p>자비스가 제공하는 양식샘플입니다. 수정하여 사용하세요.</p>
       </div>
     </div>
+
+    <div style={{display:"flex", justifyContent:"center", padding:"3%"}}>
+    <Button 
+          type="primary"
+          size="large"> 계약서 작성 </Button>
+
+    </div>
+    </div>
+
+    
   );
 }

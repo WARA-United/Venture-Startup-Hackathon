@@ -66,4 +66,11 @@
     margin: 5px 0;
     font-style: italic;
   }
+
+  .small-input {
+    width: 8%; /* 너비를 조정하여 입력 필드 크기를 줄입니다 */
+    font-size: 14px; /* 글자 크기를 조정합니다 */
+    padding: 4px; /* 패딩을 줄여 전체 크기를 줄입니다 */
+    margin-left: 4px; /* 텍스트와의 간격을 조정합니다 */
+  }
   
