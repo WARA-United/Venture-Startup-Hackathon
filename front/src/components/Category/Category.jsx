@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Category.scss";
 
-function Category() {
+function Category({ onSelectCategory }) {
   const categories = [
+    "전체",
     "건축",
     "과학",
     "기획/아이디어",
@@ -19,10 +20,23 @@ function Category() {
     "학습",
   ];
 
+  const [selectedCategory, setSelectedCategory] = useState("전체");
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    onSelectCategory(category);
+  };
+
   return (
     <div className="category">
       {categories.map((category, index) => (
-        <div key={index} className="category-item">
+        <div
+          key={index}
+          className={`category-item ${
+            category === selectedCategory ? "selected" : ""
+          }`}
+          onClick={() => handleCategoryClick(category)}
+        >
           {category}
         </div>
       ))}

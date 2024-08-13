@@ -1,83 +1,127 @@
-import React from "react";
+import { HeartOutlined, ShareAltOutlined } from "@ant-design/icons";
+import { Button, Image, Modal, Typography, message } from "antd";
+
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./SubPage.scss";
-import { Divider , Flex, Button, Image, Tag } from "antd";
 
-import { HeartOutlined, ShareAltOutlined } from '@ant-design/icons';
-
-import { Typography } from 'antd';
-const { Title } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 export default function SubPage() {
+  const location = useLocation();
+  const { cardImage, title, content1, content2, content3, content4, content5 } =
+    location.state || {};
+
+  const dummyData = {
+    organizer: "와라 Company",
+    coOrganizers: "해양경찰청, 포스코이앤씨, 한국전력공사, 월드비전",
+    sponsor: "사랑의열매 인천사회복지공동모금회",
+    category: "디자인미술영상/UCC",
+    submissionMethod: "홈페이지",
+    submissionPeriod: "2024-07-29 00:00 ~ 2024-08-30 23:59",
+    eligibility: "대학생 | 대학원생 | 일반인 | 제한 없음",
+    prizeType: "상금",
+    prizeAmount: "200만원",
+    website: "공모전 홈페이지 바로가기",
+    keywords:
+      "해양환경보전 | 숏폼 | 포스터 | 블루카본 | 지속가능한 바다 | 염생식물 | 해양환경보호 | 해양경찰청 | 씽굿 공모전 | 씽굿공모전",
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 열림 상태 여부
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <>
-    <Flex justify={"space-evenly"} style={{height:"100%"}}>
-    <div style={{padding :"2%", width:"60%"}}>
-      <Title>공모전 제목</Title>
-      <Title level={4}>부제목</Title>
-      <Tag style={{padding:"1%"}}>카테고리</Tag>
-      <div>2024/01/05 ~ 2024/05/05</div>
-      <Divider />
-
-      <p>
-        <p>
-        - 공모전 이름
-        </p>
-        <p>
-        - 공모전 내용
-        </p>
-        <p>
-        - 공모전 주최
-        </p>
-        <p>
-        - 공모전 주관
-        </p>
-        <p>
-        - 공모전 후원
-        </p>
-        <p>
-        - 공모전 일정
-        </p>
-        <p>
-        - 공모전 참가자격
-        </p>
-        <p>
-        - 공모전 신청방법
-        </p>
-        <p>
-        - 공모전 신청기간
-        </p>
-        <p>
-        - 공모전 신청비용
-        </p>
-        <p>
-        - 공모전 심사기준
-        </p>
-        <p>
-        - 공모전 시상내역
-        </p>
-        <p>
-        - 공모전 문의사항
-        </p>
-        <p>
-        - 공모전 홈페이지
-        </p>
-        <p>
-        - 공모전 첨부파일
-        </p>
-      </p>
-    </div>
-
-    <div style={{width:"20%", padding:"2%"}} >
-    <Image
-    width={200}
-    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-  />
-     <Title level={2}>공모전 제목</Title> 
-     <Button size="large" style={{marginRight:"5%"}}>지원하기</Button>
-     <Button icon={<HeartOutlined />} style={{marginRight:"5%", padding:"5%"}}/>
-     <Button icon={<ShareAltOutlined />} type="primary"/>
+    <div className="subpage">
+      <div className="image-container">
+        <Title level={2}>{title}</Title>
+        <Image width={400} height={600} src={cardImage} alt={title} />
       </div>
-    </Flex>
-    </>
+
+      <div className="content-container">
+        <Paragraph strong>
+          주최 : <Text style={{ fontSize: "18px" }}>{dummyData.organizer}</Text>
+        </Paragraph>
+        <Paragraph>
+          주관 :{" "}
+          <Text style={{ fontSize: "18px" }}>{dummyData.coOrganizers}</Text>
+        </Paragraph>
+        <Paragraph>
+          후원사 : <Text style={{ fontSize: "18px" }}>{dummyData.sponsor}</Text>
+        </Paragraph>
+        <Paragraph>
+          응모분야 : <Text style={{ fontSize: "18px" }}>{content1}</Text>
+        </Paragraph>
+        <Paragraph>
+          접수방법 :{" "}
+          <Text style={{ fontSize: "18px" }}>
+            {content2} ~ {content3}
+          </Text>
+        </Paragraph>
+        <Paragraph>
+          접수기간 :{" "}
+          <Text style={{ fontSize: "18px" }}>{dummyData.submissionPeriod}</Text>
+        </Paragraph>
+        <Paragraph>
+          참가자격 :{" "}
+          <Text style={{ fontSize: "18px" }}>{dummyData.eligibility}</Text>
+        </Paragraph>
+        <Paragraph>
+          시상종류 :{" "}
+          <Text style={{ fontSize: "18px" }}>{dummyData.prizeType}</Text>
+        </Paragraph>
+        <Paragraph>
+          시상금(1등) :{" "}
+          <Text style={{ fontSize: "18px" }}>{dummyData.prizeAmount}</Text>
+        </Paragraph>
+
+        <Paragraph>
+          내용 : <Text style={{ fontSize: "18px" }}>{content4}</Text>
+        </Paragraph>
+
+        <Paragraph>
+          홈페이지 : <a href="#">{dummyData.website}</a>
+        </Paragraph>
+
+        <Paragraph>
+          이메일 : <Text style={{ fontSize: "18px" }}>{content5}</Text>
+        </Paragraph>
+        <Paragraph>
+          키워드 :{" "}
+          <Text style={{ fontSize: "18px" }}>{dummyData.keywords}</Text>
+        </Paragraph>
+
+        <div className="button-container">
+          <Button
+            size="large"
+            onClick={() => {
+              setIsModalOpen(true);
+              message.success("챌린지에 참가되었습니다.");
+            }}
+          >
+            지원하기
+          </Button>
+          <Button size="large" icon={<HeartOutlined />} />
+          <Button size="large" icon={<ShareAltOutlined />} type="primary" />
+        </div>
+      </div>
+
+      {/* 모달 */}
+      <Modal
+        open={isModalOpen}
+        onCancel={handleCancel}
+        width={500} // 모달의 전체 크기 조정
+        footer={null}
+        style={{ padding: 0 }} // 모달의 패딩 제거
+      >
+        <div className="modal-content">
+          <img src={cardImage} alt="cardImage" />
+        </div>
+        <Title level={3}>{title}</Title>
+        <Paragraph>지원을 완료했습니다!</Paragraph>
+      </Modal>
+    </div>
   );
 }
