@@ -1,6 +1,8 @@
 package com.example.contest.Service;
 
 import com.example.contest.DTO.ContestDTO;
+import com.example.contest.DTO.ContestRequestDTO;
+import com.example.contest.DTO.VolunteerRequestDTO;
 import com.example.contest.Entity.Contest;
 import com.example.contest.Repository.ContestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class ContestServiceImpl implements ContestService{
     }
 
     @Override
-    public void createContest(ContestDTO contestDTO, MultipartFile imageFile) {
+    public void createContest(ContestRequestDTO contestDTO, MultipartFile imageFile) {
         String image;
         try {
             image = communicationService.imageUpload(imageFile);
@@ -37,6 +39,13 @@ public class ContestServiceImpl implements ContestService{
     }
 
     @Override
+    public ContestDTO applyContest(VolunteerRequestDTO volunteerRequestDTO){
+        Contest contest = contestRepository.getReferenceById(volunteerRequestDTO.getContestId());
+        contest.applyVolunteer(volunteerRequestDTO.getVolunteer());
+        return convertContestDTO(contest);
+    }
+
+    @Override
     public List<ContestDTO> getAll() {
         List<Contest> contests = contestRepository.findAll();
         return convertContestDTOList(contests);
@@ -45,6 +54,12 @@ public class ContestServiceImpl implements ContestService{
     @Override
     public List<ContestDTO> getByCategory(String category){
         List<Contest> contests = contestRepository.findByCategory(category);
+        return convertContestDTOList(contests);
+    }
+
+    @Override
+    public List<ContestDTO> getByVolunteer(String volunteer){
+        List<Contest> contests = contestRepository.findByVolunteer(volunteer);
         return convertContestDTOList(contests);
     }
 
@@ -69,7 +84,7 @@ public class ContestServiceImpl implements ContestService{
         return contestDTOList;
     }
 
-    public Contest convertContest(ContestDTO contestDTO, String image){
+    public Contest convertContest(ContestRequestDTO contestDTO, String image){
         return Contest.builder()
                 .compEmail(contestDTO.getCompEmail())
                 .category(contestDTO.getCategory())

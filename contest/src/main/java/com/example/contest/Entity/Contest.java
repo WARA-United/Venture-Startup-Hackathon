@@ -1,13 +1,13 @@
 package com.example.contest.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,4 +25,14 @@ public class Contest {
     String image;
     String startDate;
     String endDate;
+    @ElementCollection
+    @CollectionTable(name = "volunteers", joinColumns = @JoinColumn(name = "volunteer_list_id"))
+    @Column(name = "volunteer")
+    List<String> volunteer = new ArrayList<>();
+
+    public void applyVolunteer(String volunteer){
+        if(!volunteer.contains(volunteer)){
+            this.volunteer.add(volunteer);
+        }
+    }
 }

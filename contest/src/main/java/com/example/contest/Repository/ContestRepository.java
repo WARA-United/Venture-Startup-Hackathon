@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ContestRepository extends JpaRepository<Contest, Long> {
     public List<Contest> findByCategory(String category);
+    public List<Contest> findByVolunteer(String volunteer);
 }
