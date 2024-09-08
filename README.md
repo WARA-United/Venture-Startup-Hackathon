@@ -16,32 +16,32 @@
 
 ### 1. 메인 페이지
 
-![Main Page](./aseets/images/1.png)
+![Main Page](/aseets/images/1.png)
 스타트업 인재 매칭 플랫폼의 메인 페이지입니다. 공모전 정보와 플랫폼의 주요 기능을 소개합니다.
 
 ### 2. 공모전 리스트
 
-![Contest List](./aseets/images/2.png)
+![Contest List](/aseets/images/2.png)
 공모전 리스트 페이지입니다. 다양한 카테고리의 공모전을 필터링하여 확인할 수 있습니다.
 
 ### 3. 공모전 세부 정보
 
-![Contest Detail](./aseets/images/3.png)
+![Contest Detail](/aseets/images/3.png)
 선택된 공모전의 세부 정보를 확인할 수 있는 페이지입니다. 공모전의 주최, 후원사, 응모분야 등 상세한 정보를 제공합니다.
 
 ### 4. 공모전 등록
 
-![Contest Registration](./aseets/images/4.png)
+![Contest Registration](/aseets/images/4.png)
 사용자가 새로운 공모전을 등록할 수 있는 페이지입니다.
 
 ### 5. 참가자 리스트
 
-![Participant List](./aseets/images/5.png)
+![Participant List](/aseets/images/5.png)
 공모전에 참가한 참가자들의 리스트를 확인할 수 있는 페이지입니다.
 
 ### 6. 계약서 작성
 
-![Contract Creation](./aseets/images/6.png)
+![Contract Creation](/aseets/images/6.png)
 프리랜서와의 계약서를 작성할 수 있는 페이지입니다. 계약 조건과 내용을 입력할 수 있습니다.
 
 ## 비디오 데모
@@ -49,7 +49,7 @@
 ### 1. 메인 페이지 데모
 
 <video width="640" height="360" controls>
-  <source src="./aseets/images/video1.mp4" type="video/mp4">
+  <source src="/aseets/images/video1.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 메인 페이지의 데모 영상입니다. 사용자가 플랫폼을 어떻게 사용할 수 있는지 보여줍니다.
@@ -57,7 +57,7 @@
 ### 2. 공모전 리스트 데모
 
 <video width="640" height="360" controls>
-  <source src="./aseets/images/video2.mp4" type="video/mp4">
+  <source src="/aseets/images/video2.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 공모전 리스트 페이지의 데모 영상입니다. 다양한 공모전을 탐색하고 선택할 수 있는 방법을 보여줍니다.
@@ -65,7 +65,7 @@
 ### 3. 공모전 등록 데모
 
 <video width="640" height="360" controls>
-  <source src="./aseets/images/video3.mp4" type="video/mp4">
+  <source src="/aseets/images/video3.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 공모전 등록 페이지의 데모 영상입니다. 새로운 공모전을 어떻게 등록할 수 있는지 보여줍니다.
